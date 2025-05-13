@@ -6,49 +6,36 @@ class Counter{
     public:
     Counter (int value){
         this->value = value;
-    };
-    Counter (){
-        value = 1;
-    };
-    int increase (int value){
-        this->value=value;
-        
-        return value++;
-    };
-    int decrease (int value){
-        this->value = value;
-        
-        return value--;
-    };
-    void printValue(int value){
-        std::cout<<value<<std::endl;
     }
+    int increase (){return value++;}
+    int decrease (){return value--;}
+    void printValue(){std::cout<<value<<std::endl;}
 };
-
 int main(){
     std::string userAnswer;
     std::string userChoice;
     int userNumber;
-    Counter counter;
+    Counter* сounter = nullptr;
     std::cout<<"Вы хотите указать начальное значение счётчика? Введите да или нет: ";
     std::cin>>userAnswer;
     if(userAnswer=="да"){
         std::cout<< "Введите начальное значение счётчика: ";
         std::cin>>userNumber;
-        Counter counter (userNumber);
-    }else{Counter counter;}
+        сounter = new Counter(userNumber);
+    }else{сounter = new Counter (1);}
    do{ std::cout<<"Введите команду ('+', '-', '=' или 'x'): ";
     std::cin>>userChoice;
     if(userChoice=="+"){
-        counter.increase(userNumber);
+        сounter->increase();
     }else if( userChoice=="-"){
-        counter.decrease(userNumber);
+        сounter->decrease();
     }else if(userChoice == "="){
-        counter.printValue(userNumber);
+        сounter->printValue();
     }else if (userChoice =="x"){
         std::cout<<"До свидания!";
     }else{
         std::cout<<"Неверный ввод!"<<std::endl;
     }
    }while(userChoice !="x");
+   delete сounter;
 }
