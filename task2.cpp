@@ -1,4 +1,7 @@
 #include <iostream>
+#include <Windows.h>
+#include <string>
+
 
 class Counter{
     private:
@@ -7,11 +10,13 @@ class Counter{
     Counter (int value){
         this->value = value;
     }
-    int increase (){return value++;}
-    int decrease (){return value--;}
+    void increase (){ value++;}
+    void decrease (){ value--;}
     void printValue(){std::cout<<value<<std::endl;}
 };
 int main(){
+   SetConsoleCP(1251); 
+   SetConsoleOutputCP(1251);
     std::string userAnswer;
     std::string userChoice;
     int userNumber;
