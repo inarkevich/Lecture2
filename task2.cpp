@@ -1,6 +1,6 @@
 #include <iostream>
 #include <Windows.h>
-#include <string>
+#include <string> //добавила кириллицу
 
 
 class Counter{
